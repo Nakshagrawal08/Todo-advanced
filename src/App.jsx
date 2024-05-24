@@ -33,11 +33,11 @@ function App() {
           SetListOfTaks(tasks)
         }}><Button button="all" color="blue"/></div>
         <div onClick={ () =>{   
-          let filteredlist = tasks.filter((t) => t.Status==true)       
+          let filteredlist = tasks.filter((t) => t.Status)       
           SetListOfTaks(filteredlist)
         }} ><Button button="Completed" color="green"/></div>
         <div onClick={ () =>{
-            let filteredlist = tasks.filter((t) => t.Status==false)       
+            let filteredlist = tasks.filter((t) => !t.Status)       
             SetListOfTaks(filteredlist)        
           }  
           
