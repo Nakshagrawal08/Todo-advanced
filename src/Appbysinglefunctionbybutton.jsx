@@ -21,27 +21,19 @@ let tasks=[
 function App() {
   
     const [ListOfTaks , SetListOfTaks] = useState(tasks)
+    const filterlist = (Status)=>{
+      SetListOfTaks(tasks.filter((item)=>Status == undefined ? true : Status==item.Status))
     
-  
+    }
   return (
     <>
         <div class="mx-64 my-28 w-auto drop-shadow-xl ... border-gray border-thin shadow-gray bg-gray-600  p-5">
 
         <Form />
         <div class=" flex mx-44 text-center my-6">
-        <div onClick={ () =>{
-          SetListOfTaks(tasks)
-        }}><Button button="all" color="blue"/></div>
-        <div onClick={ () =>{   
-          let filteredlist = tasks.filter((t) => t.Status)       
-          SetListOfTaks(filteredlist)
-        }} ><Button button="Completed" color="green"/></div>
-        <div onClick={ () =>{
-            let filteredlist = tasks.filter((t) => !t.Status)       
-            SetListOfTaks(filteredlist)        
-          }  
-          
-        } ><Button button="Uncompleted" color="red"/></div>
+        <Button button="All" color="blue" filter={() => { filterlist() }}/>
+        <Button button="Completed" color="green" filter={() => { filterlist(true) }}/>
+        <Button button="Incompleted" color="red" filter={() => { filterlist(false) }}/>
         </div>
         <List data={ListOfTaks}/>
         </div>
